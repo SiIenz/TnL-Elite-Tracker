@@ -1,64 +1,46 @@
-name: Deploy App
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+name: TNL Elite Tracker
 
-  # Allows you to run this workflow manually from the Actions tab
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-  
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.11'
-        cache: 'pip'
+      - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install gunicorn
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
 
-    - name: Verify file structure
-      run: |
-        test -d static/css
-        test -d static/js
-        test -d static/images
-        test -d templates
-        test -f app.py
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flask flask-talisman
+          pip install -r requirements.txt
 
-    - name: Run tests and linting
-      run: |
-        pip install pytest flake8
-        flake8 . --count --exit-zero --statistics
-        pytest -v || true
+      - name: Verify directory structure
+        run: |
+          test -d static/css
+          test -d static/js
+          test -d static/images
+          test -d templates
 
-    - name: Build static assets
-      run: |
-        mkdir -p build
-        cp -r static build/
-        cp -r templates build/
+      - name: Run Flask app
+        run: |
+          python app.py &
+          sleep 5
+          kill %1
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .

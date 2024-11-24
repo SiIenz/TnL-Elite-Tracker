@@ -1,0 +1,103 @@
+body {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tab-container button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-container button.active {
+    border-bottom: 2px solid #4a9eff;
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.location-map {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.location-map-shared {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.timer-box {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.timer-sections {
+    display: flex;
+    gap: 20px;
+}
+
+.timer-section {
+    flex: 1;
+    min-width: 150px;
+}
+
+
+#timer1 {
+    color: #73E600;
+}
+
+#timer2, #timer3 {
+    color: #E67E22;
+}
+
+.start-timer {
+    background-color: #4a9eff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.countdown {
+    font-size: 24px;
+    margin-top: 10px;
+}

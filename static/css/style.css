@@ -1,6 +1,6 @@
 body {
     background-color: #2b2b2b;
-    color: #ffffff;
+    color: lightgray;;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 10px;
@@ -8,13 +8,13 @@ body {
 
 h1 {
     text-align: center;
-    color: #ffffff;
+    color: lightgray;
     font-size: 24px;
 }
 
 h2 {
     text-align: center;
-    color: #ffffff;
+    color: lightgray;
     font-size: 20px;
 }
 
@@ -28,7 +28,7 @@ h2 {
 .tab-container button {
     background: transparent;
     border: none;
-    color: #ffffff;
+    color: lightgray;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
@@ -47,16 +47,11 @@ h2 {
 
 .location-map {
     width: 100%;
-    max-width: 300px;
     height: auto;
-    margin: 10px 0;
-    border-radius: 4px;
-}
-
-.location-map-shared {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+    object-fit: contain;
+    max-width: 350px;
+    max-height: 350px;
+    /* aspect-ratio: 16 / 9; */
     margin: 10px 0;
     border-radius: 4px;
 }
@@ -77,15 +72,6 @@ h2 {
 .timer-section {
     flex: 1;
     min-width: 150px;
-}
-
-
-#timer1 {
-    color: #73E600;
-}
-
-#timer2, #timer3 {
-    color: #E67E22;
 }
 
 .start-timer {

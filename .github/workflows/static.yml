@@ -21,7 +21,6 @@ jobs:
           mkdir -p build
           cp -r static build/
           cp templates/*.html build/
-          mv build/index.html build/
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.9.3

@@ -20,9 +20,7 @@ jobs:
         run: |
           mkdir -p public
           # Kopiere index.html aus templates in das Root-Verzeichnis für GitHub Pages
-          cp templates/index.html public/
-          cp templates/shadowed_crypt.html public/
-          cp templates/sanctum_of_desire.html public/
+          cp -r templates/*.html public/
           cp -r static/* public/
           
       - name: Update file paths in HTML files
